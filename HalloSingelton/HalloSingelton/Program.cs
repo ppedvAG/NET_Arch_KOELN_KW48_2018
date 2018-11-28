@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace HalloSingelton
@@ -25,12 +26,16 @@ namespace HalloSingelton
         static int instCounter = 0;
         int instId = 0;
         private static Logger instance = null;
+        private static object syncObj = new Object();
         public static Logger Instance
         {
             get
             {
-                if (instance == null)
-                    instance = new Logger();
+                lock (syncObj)
+                {
+                    if (instance == null)
+                        instance = new Logger();
+                }
 
                 return instance;
             }
@@ -38,7 +43,6 @@ namespace HalloSingelton
 
         private Logger()
         {
-
             instCounter++;
             instId = instCounter;
         }
