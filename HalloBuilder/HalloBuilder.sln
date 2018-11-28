@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.106
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HalloBuilder", "HalloBuilder\HalloBuilder.csproj", "{2C4C4E29-CFB0-4CA5-A1B3-23554BA47CA0}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{2C4C4E29-CFB0-4CA5-A1B3-23554BA47CA0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2C4C4E29-CFB0-4CA5-A1B3-23554BA47CA0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2C4C4E29-CFB0-4CA5-A1B3-23554BA47CA0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2C4C4E29-CFB0-4CA5-A1B3-23554BA47CA0}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {B9B6A542-4F6F-4F32-BDF2-AB8A7B1EC89B}
+	EndGlobalSection
+EndGlobal
