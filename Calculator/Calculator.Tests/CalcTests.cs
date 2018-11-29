@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.QualityTools.Testing.Fakes;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -46,14 +47,23 @@ namespace Calculator.Tests
         {
             var calc = new Calc();
 
-            Assert.False(calc.IsWeekend());
-            Assert.False(calc.IsWeekend());
-            Assert.False(calc.IsWeekend());
-            Assert.False(calc.IsWeekend());
-            Assert.False(calc.IsWeekend());
-            Assert.True(calc.IsWeekend());
-            Assert.True(calc.IsWeekend());
-
+            using (ShimsContext.Create())
+            {
+                System.Fakes.ShimDateTime.NowGet = () => new DateTime(2018, 11, 26); //Mo
+                Assert.False(calc.IsWeekend());
+                System.Fakes.ShimDateTime.NowGet = () => new DateTime(2018, 11, 27); //Di
+                Assert.False(calc.IsWeekend());
+                System.Fakes.ShimDateTime.NowGet = () => new DateTime(2018, 11, 28); //Mi
+                Assert.False(calc.IsWeekend());
+                System.Fakes.ShimDateTime.NowGet = () => new DateTime(2018, 11, 29); //Do
+                Assert.False(calc.IsWeekend());
+                System.Fakes.ShimDateTime.NowGet = () => new DateTime(2018, 11, 30); //Fr
+                Assert.False(calc.IsWeekend());
+                System.Fakes.ShimDateTime.NowGet = () => new DateTime(2018, 12, 1); //Sa
+                Assert.True(calc.IsWeekend());
+                System.Fakes.ShimDateTime.NowGet = () => new DateTime(2018, 12, 2); //So
+                Assert.True(calc.IsWeekend());
+            }
         }
     }
 }
