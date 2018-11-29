@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ppedv.TastyMoon.Data.EF", "
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ppedv.TastyMoon.Data.EF.Tests", "ppedv.TastyMoon.Data.EF.Tests\ppedv.TastyMoon.Data.EF.Tests.csproj", "{15A35444-0AFD-4990-AFFE-F31BC66C6A58}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ppedv.TastyMoon.Logic", "ppedv.TastyMoon.Logic\ppedv.TastyMoon.Logic.csproj", "{0B5E3C34-37BB-42A2-BDE0-09AEFC7750FA}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{15A35444-0AFD-4990-AFFE-F31BC66C6A58}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{15A35444-0AFD-4990-AFFE-F31BC66C6A58}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{15A35444-0AFD-4990-AFFE-F31BC66C6A58}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0B5E3C34-37BB-42A2-BDE0-09AEFC7750FA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0B5E3C34-37BB-42A2-BDE0-09AEFC7750FA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0B5E3C34-37BB-42A2-BDE0-09AEFC7750FA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0B5E3C34-37BB-42A2-BDE0-09AEFC7750FA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

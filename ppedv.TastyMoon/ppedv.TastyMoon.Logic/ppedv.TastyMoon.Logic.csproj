@@ -1,0 +1,12 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\ppedv.TastyMoon.Data.EF\ppedv.TastyMoon.Data.EF.csproj" />
+    <ProjectReference Include="..\ppedv.TastyMoon.DomainModel\ppedv.TastyMoon.DomainModel.csproj" />
+  </ItemGroup>
+
+</Project>
