@@ -5,6 +5,10 @@ VisualStudioVersion = 15.0.28307.106
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ppedv.TastyMoon.DomainModel", "ppedv.TastyMoon.DomainModel\ppedv.TastyMoon.DomainModel.csproj", "{A4959B03-92F4-461A-9534-EF5FE7D6065F}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ppedv.TastyMoon.Data.EF", "ppedv.TastyMoon.Data.EF\ppedv.TastyMoon.Data.EF.csproj", "{9CECBC5D-D681-47B3-8BB7-45C929A3E150}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ppedv.TastyMoon.Data.EF.Tests", "ppedv.TastyMoon.Data.EF.Tests\ppedv.TastyMoon.Data.EF.Tests.csproj", "{15A35444-0AFD-4990-AFFE-F31BC66C6A58}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +19,14 @@ Global
 		{A4959B03-92F4-461A-9534-EF5FE7D6065F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A4959B03-92F4-461A-9534-EF5FE7D6065F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A4959B03-92F4-461A-9534-EF5FE7D6065F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9CECBC5D-D681-47B3-8BB7-45C929A3E150}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9CECBC5D-D681-47B3-8BB7-45C929A3E150}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9CECBC5D-D681-47B3-8BB7-45C929A3E150}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9CECBC5D-D681-47B3-8BB7-45C929A3E150}.Release|Any CPU.Build.0 = Release|Any CPU
+		{15A35444-0AFD-4990-AFFE-F31BC66C6A58}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{15A35444-0AFD-4990-AFFE-F31BC66C6A58}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{15A35444-0AFD-4990-AFFE-F31BC66C6A58}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{15A35444-0AFD-4990-AFFE-F31BC66C6A58}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
