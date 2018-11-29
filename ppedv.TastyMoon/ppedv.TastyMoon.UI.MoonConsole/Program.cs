@@ -16,6 +16,9 @@ namespace ppedv.TastyMoon.UI.MoonConsole
 
             var core = new Core();
 
+            if (core.Repository.GetAll<Rezept>().Count() == 0)
+                core.CreateDemodaten();
+
             foreach (var rez in core.Repository.GetAll<Rezept>())
             {
                 Console.WriteLine($"{rez.Name} {rez.BohnenArt} Milch: {rez.MilchMenge}ml");
