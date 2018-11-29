@@ -1,4 +1,6 @@
-﻿using NUnit.Framework;
+﻿using AutoFixture;
+using FluentAssertions;
+using NUnit.Framework;
 using ppedv.TastyMoon.DomainModel;
 using System;
 using System.Collections.Generic;
@@ -21,7 +23,9 @@ namespace ppedv.TastyMoon.Data.EF.Tests
 
                 Assert.That(!con.Database.Exists());
                 con.Database.Create();
+
                 Assert.That(con.Database.Exists());
+                con.Database.Exists().Should().BeTrue();
             }
         }
 
@@ -72,6 +76,37 @@ namespace ppedv.TastyMoon.Data.EF.Tests
                 //UPDATE check
                 var loaded = con.KaffeeMaschinenTypen.Find(testMaschine.Id);
                 Assert.IsNull(loaded);
+            }
+        }
+
+        [Test]
+        public void EfContext_can_CRUD_Rezept()
+        {
+            var fix = new Fixture();
+            fix.Behaviors.Add(new OmitOnRecursionBehavior());
+
+            //GUID nach dem PropertyName nur max 10 zeichen
+            fix.Customizations.Add(new StringGenerator(() => Guid.NewGuid().ToString().Substring(0, 10)));
+
+            var rezept = fix.Build<Rezept>().Create();
+
+            using (var con = new EfContext())
+            {
+                con.Rezepte.Add(rezept);
+                con.SaveChanges();
+            }
+
+            using (var con = new EfContext())
+            {
+                var loaded = con.Rezepte.Find(rezept.Id);
+                loaded.Should().NotBeNull();
+
+                loaded.Should().BeEquivalentTo(rezept, x =>
+                {
+                    x.IgnoringCyclicReferences();
+                    x.Using<DateTime>(y => y.Subject.Should().BeCloseTo(y.Expectation)).WhenTypeIs<DateTime>();
+                    return x;
+                });
             }
         }
     }

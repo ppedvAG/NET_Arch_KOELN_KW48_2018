@@ -12,6 +12,6 @@ namespace ppedv.TastyMoon.DomainModel
         public int MilchMenge { get; set; }
         public MilchArt MilchArt { get; set; }
         public int Zucker { get; set; }
-        public HashSet<KaffeeMaschinenTyp> KaffeeMaschinen { get; set; } = new HashSet<KaffeeMaschinenTyp>();
+        public virtual HashSet<KaffeeMaschinenTyp> KaffeeMaschinen { get; set; } = new HashSet<KaffeeMaschinenTyp>();
     }
 }

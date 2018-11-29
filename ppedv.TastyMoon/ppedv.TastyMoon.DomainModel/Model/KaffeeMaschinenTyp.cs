@@ -6,6 +6,6 @@ namespace ppedv.TastyMoon.DomainModel
     {
         public string Hersteller { get; set; }
         public string Modell { get; set; }
-        public HashSet<Rezept> Rezepte { get; set; } = new HashSet<Rezept>();
+        public virtual HashSet<Rezept> Rezepte { get; set; } = new HashSet<Rezept>();
     }
 }
