@@ -25,9 +25,9 @@ namespace ppedv.TastyMoon.Data.EF
             context.Set<T>().Remove(entity);
         }
 
-        public IEnumerable<T> GetAll<T>() where T : Entity
+        public IQueryable<T> Query<T>() where T : Entity
         {
-            return context.Set<T>().ToList();
+            return context.Set<T>();
         }
 
         public T GetById<T>(int id) where T : Entity

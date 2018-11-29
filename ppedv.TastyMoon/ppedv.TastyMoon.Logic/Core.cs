@@ -16,7 +16,10 @@ namespace ppedv.TastyMoon.Logic
 
         public Rezept GetRezeptWithMostUsedMilk()
         {
-            return Repository.GetAll<Rezept>().OrderBy(x => x.MilchMenge).FirstOrDefault();
+            return Repository.Query<Rezept>()
+                             .OrderByDescending(x => x.MilchMenge)
+                             .ThenBy(x => x.Name)
+                             .FirstOrDefault();
         }
 
         public void CreateDemodaten()

@@ -1,12 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 
 namespace ppedv.TastyMoon.DomainModel.Contracts
 {
     public interface IRepository
     {
-        IEnumerable<T> GetAll<T>() where T : Entity;
+        IQueryable<T> Query<T>() where T : Entity;
 
         T GetById<T>(int id) where T : Entity;
 
