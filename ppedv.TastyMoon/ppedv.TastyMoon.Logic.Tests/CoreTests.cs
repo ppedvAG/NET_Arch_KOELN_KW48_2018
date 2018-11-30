@@ -15,8 +15,12 @@ namespace ppedv.TastyMoon.Logic.Tests
         [TestMethod]
         public void Core_GetRezeptWithMostUsedMilk_No_Rezepte_in_DB()
         {
-            var mock = new Mock<IRepository>();
-            var core = new Core(mock.Object);
+            var mock = new Mock<IRepository<Rezept>>();
+
+            var uowMock = new Mock<IUnitOfWork>();
+            uowMock.Setup(x => x.GetRepo<Rezept>()).Returns(mock.Object);
+
+            var core = new Core(uowMock.Object);
 
             var result = core.GetRezeptWithMostUsedMilk();
 
@@ -27,15 +31,20 @@ namespace ppedv.TastyMoon.Logic.Tests
         [TestMethod]
         public void Core_GetRezeptWithMostUsedMilk_2_Rezepte_in_DB()
         {
-            var mock = new Mock<IRepository>();
-            mock.Setup(x => x.Query<Rezept>()).Returns(() =>
+            var mock = new Mock<IRepository<Rezept>>();
+            mock.Setup(x => x.Query()).Returns(() =>
             {
                 var r1 = new Rezept() { MilchMenge = 30, Name = "r1" };
                 var r2 = new Rezept() { MilchMenge = 50, Name = "r2" };
                 return new[] { r1, r2 }.AsQueryable();
             });
 
-            var core = new Core(mock.Object);
+
+            var uowMock = new Mock<IUnitOfWork>();
+            uowMock.Setup(x => x.GetRepo<Rezept>()).Returns(mock.Object);
+
+            var core = new Core(uowMock.Object);
+
 
             var result = core.GetRezeptWithMostUsedMilk();
 
@@ -45,15 +54,18 @@ namespace ppedv.TastyMoon.Logic.Tests
         [TestMethod]
         public void Core_GetRezeptWithMostUsedMilk_2_Rezepte_with_same_Milk_in_DB()
         {
-            var mock = new Mock<IRepository>();
-            mock.Setup(x => x.Query<Rezept>()).Returns(() =>
+            var mock = new Mock<IRepository<Rezept>>();
+
+            mock.Setup(x => x.Query()).Returns(() =>
             {
                 var r1 = new Rezept() { MilchMenge = 50, Name = "b" };
                 var r2 = new Rezept() { MilchMenge = 50, Name = "a" };
                 return new[] { r1, r2 }.AsQueryable();
             });
+            var uowMock = new Mock<IUnitOfWork>();
+            uowMock.Setup(x => x.GetRepo<Rezept>()).Returns(mock.Object);
 
-            var core = new Core(mock.Object);
+            var core = new Core(uowMock.Object);
 
             var result = core.GetRezeptWithMostUsedMilk();
 
