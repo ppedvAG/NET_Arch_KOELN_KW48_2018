@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 using System.Linq;
 using FluentAssertions;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
@@ -59,5 +60,54 @@ namespace ppedv.TastyMoon.Logic.Tests
             result.Name.Should().Be("a");
         }
 
+
+        [TestMethod]
+        public void Core_can_make_coffee_no_port_throws_IOException()
+        {
+            var km = new Mock<IKaffeemaschine>();
+            km.Setup(x => x.Status).Returns(MaschinenStatus.Ready);
+
+            var core = new Core(null, new[] { km.Object });
+
+            //mstest
+            Assert.ThrowsException<IOException>(() => core.MakeCoffe(null, km.Object));
+
+            //Fluentassertion
+            Action act = () => core.MakeCoffe(null, km.Object);
+            act.Should().Throw<IOException>();
+
+
+        }
+
+
+        [TestMethod]
+        public void Core_can_make_coffee_maschine_not_ready_throws_InvalidOperationException()
+        {
+            var km = new Mock<IKaffeemaschine>();
+            km.Setup(x => x.Status).Returns(MaschinenStatus.OnFire);
+            km.Setup(x => x.Port).Returns("LPT1");
+
+            var coreMock = new Mock<Core>(null, new[] { km.Object });
+            coreMock.CallBase = true;
+
+            Assert.ThrowsException<InvalidOperationException>(() => coreMock.Object.MakeCoffe(null, km.Object));
+
+            km.Verify(x => x.MacheKaffee(It.IsAny<Rezept>()), Times.Never);
+        }
+
+        [TestMethod]
+        public void Core_can_make_coffee()
+        {
+            var km = new Mock<IKaffeemaschine>();
+            km.Setup(x => x.Status).Returns(MaschinenStatus.Ready);
+            km.Setup(x => x.Port).Returns("LPT1");
+
+            var coreMock = new Mock<Core>(null, new[] { km.Object });
+            coreMock.CallBase = true;
+
+            coreMock.Object.MakeCoffe(null, km.Object);
+
+            km.Verify(x => x.MacheKaffee(It.IsAny<Rezept>()), Times.Once);
+        }
     }
 }

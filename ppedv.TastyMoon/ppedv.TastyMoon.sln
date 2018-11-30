@@ -3,17 +3,25 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.28307.106
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ppedv.TastyMoon.DomainModel", "ppedv.TastyMoon.DomainModel\ppedv.TastyMoon.DomainModel.csproj", "{A4959B03-92F4-461A-9534-EF5FE7D6065F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ppedv.TastyMoon.DomainModel", "ppedv.TastyMoon.DomainModel\ppedv.TastyMoon.DomainModel.csproj", "{A4959B03-92F4-461A-9534-EF5FE7D6065F}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ppedv.TastyMoon.Data.EF", "ppedv.TastyMoon.Data.EF\ppedv.TastyMoon.Data.EF.csproj", "{9CECBC5D-D681-47B3-8BB7-45C929A3E150}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ppedv.TastyMoon.Data.EF.Tests", "ppedv.TastyMoon.Data.EF.Tests\ppedv.TastyMoon.Data.EF.Tests.csproj", "{15A35444-0AFD-4990-AFFE-F31BC66C6A58}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ppedv.TastyMoon.Logic", "ppedv.TastyMoon.Logic\ppedv.TastyMoon.Logic.csproj", "{0B5E3C34-37BB-42A2-BDE0-09AEFC7750FA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ppedv.TastyMoon.Logic", "ppedv.TastyMoon.Logic\ppedv.TastyMoon.Logic.csproj", "{0B5E3C34-37BB-42A2-BDE0-09AEFC7750FA}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ppedv.TastyMoon.UI.MoonConsole", "ppedv.TastyMoon.UI.MoonConsole\ppedv.TastyMoon.UI.MoonConsole.csproj", "{A53EA4D6-4A76-4B65-87DC-AB3C3AFECF75}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ppedv.TastyMoon.Logic.Tests", "ppedv.TastyMoon.Logic.Tests\ppedv.TastyMoon.Logic.Tests.csproj", "{94392244-354F-44A6-A3A9-45C495C505BB}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ExternDeviceDrivers", "ExternDeviceDrivers", "{E8D833B5-EBE9-4B5C-8644-D047B7372818}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Binford.CoffeeTurbo5000", "Binford.CoffeeTurbo5000\Binford.CoffeeTurbo5000.csproj", "{0BB7E724-10AB-4E25-B90F-36BEC816CA9F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ppedv.TastyMoon.Device.BinFord", "ppedv.TastyMoon.Device.BinFord\ppedv.TastyMoon.Device.BinFord.csproj", "{D2231A36-C29E-44A5-B849-31D37C4C1B1F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ppedv.TastyMoon.Device.BinFord.Tests", "ppedv.TastyMoon.Device.BinFord.Tests\ppedv.TastyMoon.Device.BinFord.Tests.csproj", "{B3CFC7E9-BA13-4EAB-AB93-9C19412172E8}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -45,9 +53,24 @@ Global
 		{94392244-354F-44A6-A3A9-45C495C505BB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{94392244-354F-44A6-A3A9-45C495C505BB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{94392244-354F-44A6-A3A9-45C495C505BB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0BB7E724-10AB-4E25-B90F-36BEC816CA9F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0BB7E724-10AB-4E25-B90F-36BEC816CA9F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0BB7E724-10AB-4E25-B90F-36BEC816CA9F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0BB7E724-10AB-4E25-B90F-36BEC816CA9F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D2231A36-C29E-44A5-B849-31D37C4C1B1F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D2231A36-C29E-44A5-B849-31D37C4C1B1F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D2231A36-C29E-44A5-B849-31D37C4C1B1F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D2231A36-C29E-44A5-B849-31D37C4C1B1F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B3CFC7E9-BA13-4EAB-AB93-9C19412172E8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B3CFC7E9-BA13-4EAB-AB93-9C19412172E8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B3CFC7E9-BA13-4EAB-AB93-9C19412172E8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B3CFC7E9-BA13-4EAB-AB93-9C19412172E8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{0BB7E724-10AB-4E25-B90F-36BEC816CA9F} = {E8D833B5-EBE9-4B5C-8644-D047B7372818}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {15D1AC87-1EC3-4380-9A05-EFD2E38F856D}

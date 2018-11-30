@@ -1,6 +1,8 @@
 ﻿using ppedv.TastyMoon.DomainModel;
 using ppedv.TastyMoon.DomainModel.Contracts;
 using System;
+using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 
 namespace ppedv.TastyMoon.Logic
@@ -9,9 +11,26 @@ namespace ppedv.TastyMoon.Logic
     {
         public IRepository Repository { get; private set; }
 
-        public Core(IRepository repo)
+        public IEnumerable<IKaffeemaschine> Kaffeemaschinen { get; private set; }
+
+        public Core(IRepository repo, IEnumerable<IKaffeemaschine> maschinen)
         {
             Repository = repo;
+            Kaffeemaschinen = maschinen;
+        }
+
+        public Core(IRepository repo) : this(repo, null)
+        { }
+
+        public void MakeCoffe(Rezept rez, IKaffeemaschine maschine)
+        {
+            if (string.IsNullOrWhiteSpace(maschine.Port))
+                throw new IOException("Ohne Port, kein Kaffee!");
+
+            if (maschine.Status != MaschinenStatus.Ready)
+                throw new InvalidOperationException("Maschine ist nicht bereit");
+
+            maschine.MacheKaffee(rez);
         }
 
         public Rezept GetRezeptWithMostUsedMilk()
@@ -21,6 +40,8 @@ namespace ppedv.TastyMoon.Logic
                              .ThenBy(x => x.Name)
                              .FirstOrDefault();
         }
+
+
 
         public void CreateDemodaten()
         {

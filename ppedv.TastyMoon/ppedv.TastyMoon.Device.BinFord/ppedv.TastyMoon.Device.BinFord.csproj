@@ -1,0 +1,12 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Binford.CoffeeTurbo5000\Binford.CoffeeTurbo5000.csproj" />
+    <ProjectReference Include="..\ppedv.TastyMoon.DomainModel\ppedv.TastyMoon.DomainModel.csproj" />
+  </ItemGroup>
+
+</Project>
