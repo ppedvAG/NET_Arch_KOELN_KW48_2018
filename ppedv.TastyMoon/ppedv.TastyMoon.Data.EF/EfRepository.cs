@@ -8,42 +8,69 @@ using System.Threading.Tasks;
 
 namespace ppedv.TastyMoon.Data.EF
 {
-    public class EfRepository : IRepository
+    public class EfUnitOfWork : IUnitOfWork
     {
-
         EfContext context = new EfContext();
 
-        public void Add<T>(T entity) where T : Entity
-        {
-            //if (typeof(T) == typeof(Rezept))
-            //    context.Rezepte.Add(entity as Rezept);
-            context.Set<T>().Add(entity);
-        }
+        public IRezeptRepository RezeptRepo => new EfRezeptRepository(context);
 
-        public void Delete<T>(T entity) where T : Entity
+        public IRepository<T> GetRepo<T>() where T : Entity
         {
-            context.Set<T>().Remove(entity);
-        }
-
-        public IQueryable<T> Query<T>() where T : Entity
-        {
-            return context.Set<T>();
-        }
-
-        public T GetById<T>(int id) where T : Entity
-        {
-            return context.Set<T>().Find(id);
+            return new EfRepository<T>(context);
         }
 
         public void Save()
         {
             context.SaveChanges();
         }
+    }
 
-        public void Update<T>(T entity) where T : Entity
+    public class EfRezeptRepository : EfRepository<Rezept>, IRezeptRepository
+    {
+        public EfRezeptRepository(EfContext context) : base(context)
+        { }
+
+        public IEnumerable<Rezept> GetRezepteMitMeisterMilch()
+        {
+            return context.Rezepte.OrderByDescending(x => x.MilchMenge).ThenBy(x => x.Name);
+        }
+    }
+
+    public class EfRepository<T> : IRepository<T> where T : Entity
+    {
+        protected EfContext context;
+        public EfRepository(EfContext context)
+        {
+            this.context = context;
+        }
+
+        public void Add(T entity)
+        {
+            //if (typeof(T) == typeof(Rezept))
+            //    context.Rezepte.Add(entity as Rezept);
+            context.Set<T>().Add(entity);
+        }
+
+        public void Delete(T entity)
+        {
+            context.Set<T>().Remove(entity);
+        }
+
+        public IQueryable<T> Query()
+        {
+            return context.Set<T>();
+        }
+
+        public T GetById(int id)
+        {
+            return context.Set<T>().Find(id);
+        }
+
+
+        public void Update(T entity)
         {
             //disconnected szenarien wie WCF, REST, WebAPI, ASP.MVC
-            var loaded = GetById<T>(entity.Id);
+            var loaded = GetById(entity.Id);
             if (loaded != null)
             {
                 context.Entry(loaded).CurrentValues.SetValues(entity);

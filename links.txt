@@ -1,1 +1,4 @@
 https://sietch.net/ViewNewsItem.aspx?NewsItemID=271
+
+https://stackoverflow.com/questions/16572743/generic-repository-with-data-access-layer
+

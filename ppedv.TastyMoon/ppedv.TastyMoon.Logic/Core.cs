@@ -9,17 +9,17 @@ namespace ppedv.TastyMoon.Logic
 {
     public class Core
     {
-        public IRepository Repository { get; private set; }
+        public IUnitOfWork UnitOfWork { get; private set; }
 
         public IEnumerable<IKaffeemaschine> Kaffeemaschinen { get; private set; }
 
-        public Core(IRepository repo, IEnumerable<IKaffeemaschine> maschinen)
+        public Core(IUnitOfWork uow, IEnumerable<IKaffeemaschine> maschinen)
         {
-            Repository = repo;
+            UnitOfWork = uow;
             Kaffeemaschinen = maschinen;
         }
 
-        public Core(IRepository repo) : this(repo, null)
+        public Core(IUnitOfWork uow) : this(uow, null)
         { }
 
 
@@ -36,7 +36,7 @@ namespace ppedv.TastyMoon.Logic
 
         public Rezept GetRezeptWithMostUsedMilk()
         {
-            return Repository.Query<Rezept>()
+            return UnitOfWork.GetRepo<Rezept>().Query()
                              .OrderByDescending(x => x.MilchMenge)
                              .ThenBy(x => x.Name)
                              .FirstOrDefault();
@@ -61,9 +61,9 @@ namespace ppedv.TastyMoon.Logic
             new[] { r1, r2, r4, r5, }.ToList().ForEach(x => m2.Rezepte.Add(x));
             new[] { r1, r3, r4, r5, }.ToList().ForEach(x => m3.Rezepte.Add(x));
 
-            new[] { m1, m2, m3 }.ToList().ForEach(x => Repository.Add(x));
+            new[] { m1, m2, m3 }.ToList().ForEach(x => UnitOfWork.GetRepo<KaffeeMaschinenTyp>().Add(x));
 
-            Repository.Save();
+            UnitOfWork.Save();
         }
 
  

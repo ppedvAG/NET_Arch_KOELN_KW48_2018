@@ -20,7 +20,6 @@ namespace ppedv.TastyMoon.UI.MoonConsole
         {
             var builder = new ContainerBuilder();
             //builder.RegisterType<Data.EF.EfRepository>().As<IRepository>();
-            //builder.RegisterType<FakeBeeper>().As<IBeeper>();
 
             //pfad muss absolut sein
             string path = Path.GetFullPath(@"..\..\..\ppedv.TastyMoon.Data.EF\bin\debug\ppedv.TastyMoon.Data.EF.dll");
@@ -29,8 +28,8 @@ namespace ppedv.TastyMoon.UI.MoonConsole
             Assembly extAss = Assembly.LoadFile(path);
 
             //erstbeste Klasse mit IBeeper wird verwendet
-            builder.RegisterAssemblyTypes(extAss).As<IRepository>();
-            builder.RegisterType<Core>().UsingConstructor(typeof(IRepository));
+            builder.RegisterAssemblyTypes(extAss).As<IUnitOfWork>();
+            builder.RegisterType<Core>().UsingConstructor(typeof(IUnitOfWork));
             Container = builder.Build();
         }
 
@@ -45,10 +44,10 @@ namespace ppedv.TastyMoon.UI.MoonConsole
                 var core = Container.Resolve<Core>();
 
 
-                if (core.Repository.Query<Rezept>().Count() == 0)
+                if (core.UnitOfWork.GetRepo<Rezept>().Query().Count() == 0)
                     core.CreateDemodaten();
 
-                foreach (var rez in core.Repository.Query<Rezept>().ToList())
+                foreach (var rez in core.UnitOfWork.GetRepo<Rezept>().Query().ToList())
                 {
                     Console.WriteLine($"{rez.Name} {rez.BohnenArt} Milch: {rez.MilchMenge}ml");
                     foreach (var m in rez.KaffeeMaschinen)
