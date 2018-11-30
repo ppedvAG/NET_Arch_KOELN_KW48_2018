@@ -18,13 +18,13 @@ namespace ppedv.TastyMoon.UI.Web.Controllers
         public ActionResult Index()
         {
 
-            return View(core.Repository.Query<Rezept>().ToList());
+            return View(core.UnitOfWork.RezeptRepo.Query().ToList());
         }
 
         // GET: Rezept/Details/5
         public ActionResult Details(int id)
         {
-            return View(core.Repository.GetById<Rezept>(id));
+            return View(core.UnitOfWork.RezeptRepo.GetById(id));
         }
 
         // GET: Rezept/Create
@@ -39,8 +39,8 @@ namespace ppedv.TastyMoon.UI.Web.Controllers
         {
             try
             {
-                core.Repository.Add(rezept);
-                core.Repository.Save();
+                core.UnitOfWork.RezeptRepo.Add(rezept);
+                core.UnitOfWork.Save();
 
                 return RedirectToAction("Index");
             }
@@ -53,7 +53,7 @@ namespace ppedv.TastyMoon.UI.Web.Controllers
         // GET: Rezept/Edit/5
         public ActionResult Edit(int id)
         {
-            return View(core.Repository.GetById<Rezept>(id));
+            return View(core.UnitOfWork.RezeptRepo.GetById(id));
         }
 
         // POST: Rezept/Edit/5
@@ -62,8 +62,8 @@ namespace ppedv.TastyMoon.UI.Web.Controllers
         {
             try
             {
-                core.Repository.Update(rezept);
-                core.Repository.Save();
+                core.UnitOfWork.RezeptRepo.Update(rezept);
+                core.UnitOfWork.Save();
 
                 return RedirectToAction("Index");
             }
@@ -76,7 +76,7 @@ namespace ppedv.TastyMoon.UI.Web.Controllers
         // GET: Rezept/Delete/5
         public ActionResult Delete(int id)
         {
-            return View(core.Repository.GetById<Rezept>(id));
+            return View(core.UnitOfWork.RezeptRepo.GetById(id));
         }
 
         // POST: Rezept/Delete/5
@@ -86,11 +86,11 @@ namespace ppedv.TastyMoon.UI.Web.Controllers
             try
             {
                 // TODO: Add delete logic here
-                var loaded = core.Repository.GetById<Rezept>(id);
+                var loaded = core.UnitOfWork.RezeptRepo.GetById(id);
                 if (loaded != null)
                 {
-                    core.Repository.Delete(loaded);
-                    core.Repository.Save();
+                    core.UnitOfWork.RezeptRepo.Delete(loaded);
+                    core.UnitOfWork.Save();
                 }
 
                 return RedirectToAction("Index");

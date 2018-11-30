@@ -43,8 +43,8 @@ namespace ppedv.TastyMoon.UI.Web
             Assembly extAss = Assembly.LoadFile(path);
 
             //erstbeste Klasse mit IBeeper wird verwendet
-            builder.RegisterAssemblyTypes(extAss).As<IRepository>();
-            builder.RegisterType<Core>().UsingConstructor(typeof(IRepository));
+            builder.RegisterAssemblyTypes(extAss).As<IUnitOfWork>();
+            builder.RegisterType<Core>().UsingConstructor(typeof(IUnitOfWork));
             Container = builder.Build();
         }
     }
