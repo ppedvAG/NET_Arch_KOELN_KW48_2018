@@ -10,7 +10,10 @@ namespace ppedv.TastyMoon.Data.EF
         public DbSet<KaffeeMaschinenTyp> KaffeeMaschinenTypen { get; set; }
 
         public EfContext(string conString) : base(conString)
-        { }
+        {
+            //nicht mehr DB erstellen
+          //  Database.SetInitializer(new NullDatabaseInitializer<EfContext>());
+        }
 
         public EfContext() : this("Server=.;Database=TastyMoon_Dev;Trusted_Connection=true;")
         { }
