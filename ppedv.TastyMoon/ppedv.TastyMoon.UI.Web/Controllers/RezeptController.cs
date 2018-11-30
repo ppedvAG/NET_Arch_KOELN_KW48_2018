@@ -1,4 +1,5 @@
-﻿using ppedv.TastyMoon.DomainModel;
+﻿using Autofac;
+using ppedv.TastyMoon.DomainModel;
 using ppedv.TastyMoon.Logic;
 using System;
 using System.Collections.Generic;
@@ -10,7 +11,8 @@ namespace ppedv.TastyMoon.UI.Web.Controllers
 {
     public class RezeptController : Controller
     {
-        Core core = new Core();
+
+        Core core = MvcApplication.Container.Resolve<Core>();
 
         // GET: Rezept
         public ActionResult Index()

@@ -22,8 +22,6 @@ namespace ppedv.TastyMoon.Logic
         public Core(IRepository repo) : this(repo, null)
         { }
 
-        public Core() : this(new Data.EF.EfRepository())
-        { }
 
         public void MakeCoffe(Rezept rez, IKaffeemaschine maschine)
         {
