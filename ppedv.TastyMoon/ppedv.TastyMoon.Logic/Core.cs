@@ -22,6 +22,9 @@ namespace ppedv.TastyMoon.Logic
         public Core(IRepository repo) : this(repo, null)
         { }
 
+        public Core() : this(new Data.EF.EfRepository())
+        { }
+
         public void MakeCoffe(Rezept rez, IKaffeemaschine maschine)
         {
             if (string.IsNullOrWhiteSpace(maschine.Port))
@@ -65,7 +68,6 @@ namespace ppedv.TastyMoon.Logic
             Repository.Save();
         }
 
-        public Core() : this(new Data.EF.EfRepository())
-        { }
+ 
     }
 }

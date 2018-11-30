@@ -1,0 +1,82 @@
+﻿@model ppedv.TastyMoon.DomainModel.Rezept
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Datails</h2>
+
+<div>
+    <h4>Rezept</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Created)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Created)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Modified)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Modified)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.KaffeeMenge)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.KaffeeMenge)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.WasserMenge)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.WasserMenge)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.WasserTemp)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.WasserTemp)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MilchMenge)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MilchMenge)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Zucker)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Zucker)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
